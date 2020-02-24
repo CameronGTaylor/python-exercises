@@ -93,4 +93,29 @@ def cumsum(user_list):
         total += num
     return total_list
 
-print(cumsum([1,4,7,11]))
+#Bonus 1
+def twelveto24(user_time):
+    if 'am' in user_time:
+        user_time = user_time.split('am')
+        return user_time[0]
+    elif 'pm' in user_time:
+        user_time = user_time.split(':')
+        user_time[0] = int(user_time[0])
+        user_time[0] += 12
+        user_time[0] = str(user_time[0])
+        user_time = ':'.join(user_time)
+        user_time = user_time.split('pm')
+        return user_time[0]
+    else:
+        return "Enter a time in format (10:45am or 4:30pm)"
+
+def col_index(column):
+    total = 0
+    column = column.lower()
+    
+    for i in range(0,len(column)):
+        total += (ord(column[i]) - 96) * (26 ** (len(column)-1-i) )
+    return total
+
+
+print(col_index('abc'))
