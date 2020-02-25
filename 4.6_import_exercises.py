@@ -18,7 +18,7 @@
 #     print(i)
 
 from json import load
-from statistics import mode
+#from statistics import mode
 from collections import Counter
 
 profiles = load(open('profiles.json'))
@@ -46,15 +46,39 @@ for i in range(len(total_balance)):
 
 fruit_list = [fruit['favoriteFruit'] for fruit in profiles]
 
-fruit_count = [fruit.count(fruit) for fruit in fruit_list]
 
+fruit_count = Counter(fruit_list)
+fruit_value = fruit_count.most_common()
+
+# fruit_count = dict(Counter(fruit_list))
+
+# fruit_value = []
+# for fruit in fruit_count:
+#     fruit_value.append(fruit_count.get(fruit))
+
+# for fruit in fruit_count:
+#     if fruit_count.get(fruit) == min(fruit_value):
+#         min_fruit = fruit
+
+all_greetings = [message['greeting'] for message in profiles]
+all_greetings = ''.join(all_greetings)
+all_greetings = all_greetings.split(' ')
+
+new_greetings = []
+for word in all_greetings: 
+    if word.isdigit() == True:
+        new_greetings.append(int(word))
 
 print(len(users))
 print(len(active_users))
 print(len(inactive_users))
 print(f"${sum(total_balance)}")
 print(f"${sum(total_balance) / len(total_balance):.2f}")
-print(user_min)
-print(user_max)
-print(mode(fruit_list))
-print(fruit_count)
+print(f'The lowest balance user is {user_min}')
+print(f'The highest balance user is {user_max}')
+print(f'The most common fruit is {fruit_value[0][0]}')
+print(f'The least common fruit is {fruit_value[-1][0]}')
+# print(f'The most common fruit is {mode(fruit_list)}')
+# print(f'The least common fruit is {min_fruit}')
+print(f'The total number of unread messages ' \
+     f'for all users is {sum(new_greetings)}')
