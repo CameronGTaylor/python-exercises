@@ -14,8 +14,13 @@
 # for i in it.product('abc','123'):
 #     print(i)
 
-# for i in it.permutations('ABCD', 2):
+# print(list(it.product('abc','123')))
+# use islice to get the first x values
+
+# for i in it.combinations('ABCD', 2):
 #     print(i)
+
+# print(list(it.combinations('ABCD', 2)))
 
 from json import load
 #from statistics import mode
@@ -25,9 +30,9 @@ profiles = load(open('profiles.json'))
 
 users = [user['name'] for user in profiles]
 active_users = [user['name'] for user in profiles \
-    if user['isActive'] == True]
+    if user['isActive']]
 inactive_users = [user['name'] for user in profiles \
-    if user['isActive'] == False]
+    if not user['isActive']]
 
 total_balance_list = [user['balance'] for user in profiles]
 
@@ -66,14 +71,14 @@ all_greetings = all_greetings.split(' ')
 
 new_greetings = []
 for word in all_greetings: 
-    if word.isdigit() == True:
+    if word.isdigit():
         new_greetings.append(int(word))
 
 print(len(users))
 print(len(active_users))
 print(len(inactive_users))
-print(f"${sum(total_balance)}")
-print(f"${sum(total_balance) / len(total_balance):.2f}")
+print(f"${sum(total_balance):,.2f}")
+print(f"${sum(total_balance) / len(total_balance):,.2f}")
 print(f'The lowest balance user is {user_min}')
 print(f'The highest balance user is {user_max}')
 print(f'The most common fruit is {fruit_value[0][0]}')
