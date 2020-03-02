@@ -1,4 +1,2 @@
 Eggs
-Bread
-Milk
 Butter

@@ -6,7 +6,7 @@ with open('4.6_import_exercises.py') as f:
 
 #1b
 # for i in range(len(file_contents_lines)):
-#     print(f'Line: {i} {file_contents_lines[i]}')
+#     print(f'Line: {i + 1} {file_contents_lines[i]}')
 
 #2a
 grocery_list = ['Eggs', 'Bread', 'Milk', 'Butter']
@@ -14,7 +14,7 @@ grocery_list = ['Eggs', 'Bread', 'Milk', 'Butter']
 def make_grocery_list(user_list):
     with open('my_grocery_list.txt', 'w') as f:
         for item in user_list:
-            f.writelines(item + '\n')
+            f.write(item + '\n')
 
 make_grocery_list(grocery_list)
 
@@ -30,11 +30,13 @@ show_grocery_list('my_grocery_list.txt')
 
 #2d
 def buy_item(user_item):
-    grocery_list = show_grocery_list('my_grocery_list.txt')
-    for item in grocery_list:
+    updated_groceries = show_grocery_list('my_grocery_list.txt')
+    for item in updated_groceries:
         if user_item.lower() == item.lower():
-            grocery_list.remove(item)
-    print(grocery_list)
-    return grocery_list
+            updated_groceries.remove(item)
+    print(updated_groceries)
+    make_grocery_list(updated_groceries)
 
 buy_item('milk')
+
+buy_item('bread')
