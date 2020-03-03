@@ -101,11 +101,11 @@ evens_in_b = b[b % 2 == 0]
 # # Exercise 9 - print out the shape of the array b.
 # print(b.shape)
 # # Exercise 10 - transpose the array b.
-# print(b.reshape(3,2))
+# print(b.T) #or b.transpose()
 # # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
-# print(b.reshape(1,6))
+# print(b.reshape(1,6)) #or b.flatten()
 # # Exercise 12 - reshape the array b to be a list of 6 lists, each containing only 1 number (6 x 1)
-# print(b.reshape(6,1))
+# print(b.reshape(6,1)) #or b.reshape(-1,1)
 
 ## Setup 3
 c = [
@@ -120,16 +120,17 @@ c = np.array(c)
 # # Exercise 2 - Determine the standard deviation of c.
 # print(c.std())
 # # Exercise 3 - Determine the variance of c.
-# print(c.var())
+# print(c.var()) #or c.std() ** 2
 # # Exercise 4 - Print out the shape of the array c
 # print(c.shape)
 # # Exercise 5 - Transpose c and print out transposed result.
 # print(c.transpose())
-# # Exercise 6 (c,c)) 
+# # Exercise 6 Get the dot product of the array c with c.
+# print(np.dot(c,c)) #or c.dot(c) 
 # # Exercise 7 - Write the code necessary to sum up the result of c times c transposed. Answer should be 261
-# print((c * c.transpose()).sum())
+# print((c * c.T).sum())
 # # Exercise 8 - Write the code necessary to determine the product of c times c transposed. Answer should be 131681894400.
-# print((c * c.transpose()).prod())
+# print((c * c.T).prod())
 
 ## Setup 4
 d = [
@@ -151,10 +152,11 @@ d = np.array(d)
 # # Exercise 6 - Return an array of only the unique numbers in d.
 # print(np.unique(d))
 # # Exercise 7 - Determine how many unique numbers there are in d.
-# print(len(np.unique(d)))
+# print(len(np.unique(d))) #or 
+# print(np.unique(d).size)
 # # Exercise 8 - Print out the shape of d.
 # print(d.shape)
 # # Exercise 9 - Transpose and then print out the shape of d.
-# print(d.transpose().shape)
+# print(d.T.shape)
 # # Exercise 10 - Reshape d into an array of 9 x 2
 print(d.reshape(9,2))
